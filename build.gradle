@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version '8.0.1'
+}
+
+group 'com.yuriytkach.jitc.solid'
+version '1.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.11.2'
+    testImplementation "org.assertj:assertj-core:3.24.2"
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
