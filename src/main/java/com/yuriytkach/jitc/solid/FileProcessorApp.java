@@ -1,6 +1,10 @@
 package com.yuriytkach.jitc.solid;
 
 import java.nio.file.Path;
+import java.util.Set;
+
+import com.yuriytkach.jitc.solid.readers.PdfFileReader;
+import com.yuriytkach.jitc.solid.readers.TextFileReader;
 
 public class FileProcessorApp {
 
@@ -21,7 +25,12 @@ public class FileProcessorApp {
     final FileProcessor fileProcessor = new FileProcessor(
       fileFinder,
       new FileDownloader(),
-      new TextFileAnalyzer()
+      new FileTypeResolver(),
+      Set.of(
+        new TextFileReader(),
+        new PdfFileReader()
+      ),
+      new TextAnalyzer()
     );
 
     final long count = fileProcessor.processLatestTextFile(word);

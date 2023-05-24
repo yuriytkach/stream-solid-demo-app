@@ -17,6 +17,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.apache.pdfbox:pdfbox:2.0.28'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
     testImplementation 'org.mockito:mockito-junit-jupiter:3.11.2'
     testImplementation "org.assertj:assertj-core:3.24.2"

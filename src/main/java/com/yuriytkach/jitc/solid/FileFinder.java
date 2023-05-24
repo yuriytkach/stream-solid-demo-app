@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import lombok.RequiredArgsConstructor;
@@ -13,11 +14,11 @@ public class FileFinder {
 
   private final Path folderPath;
 
-  public String findLatestTextFile() {
+  public String findLatestFile(final Function<Path, Boolean> fileFilter) {
     try (Stream<Path> paths = Files.walk(folderPath)) {
       return paths
         .filter(Files::isRegularFile)
-        .filter(path -> path.toString().endsWith(".txt"))
+        .filter(fileFilter::apply)
         .max(Comparator.comparing(path -> path.toFile().lastModified()))
         .map(Path::toString)
         .orElseThrow(() -> new RuntimeException("No text files found in " + folderPath));
