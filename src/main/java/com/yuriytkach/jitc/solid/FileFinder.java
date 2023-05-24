@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class FileFinder {
 
-  public String findLatestTextFile(final Path folderPath, final SupportedExtension supportedExtension) {
+  public String findLatestFile(final Path folderPath, final SupportedExtension supportedExtension) {
     try (Stream<Path> paths = Files.walk(folderPath)) {
       return paths
         .filter(Files::isRegularFile)

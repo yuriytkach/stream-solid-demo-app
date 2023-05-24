@@ -21,7 +21,7 @@ public class FileProcessor {
   }
 
   public long processLatestTextFile(final String folderPath, final String wordToCount, final SupportedExtension extension) {
-    final String latestFileKey = fileFinder.findLatestTextFile(Path.of(folderPath), extension);
+    final String latestFileKey = fileFinder.findLatestFile(Path.of(folderPath), extension);
     final FileContentDownloader fileContentDownloader = contentDownloaderByExtension.get(extension);
     final String latestFileContent = fileContentDownloader.downloadFileContent(latestFileKey);
     return textFileAnalyzer.countWordOccurrences(latestFileContent, wordToCount);
