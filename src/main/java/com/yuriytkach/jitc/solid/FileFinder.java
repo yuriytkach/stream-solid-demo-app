@@ -24,7 +24,7 @@ public class FileFinder {
         .orElseThrow(() -> new RuntimeException("No text files found in " + folderPath));
     } catch (final IOException ex) {
       throw new IllegalStateException(
-        "Error while searching for text files in " + folderPath + ":" + ex.getMessage(),
+        "Error while searching for files in " + folderPath + ":" + ex.getMessage(),
         ex
       );
     }

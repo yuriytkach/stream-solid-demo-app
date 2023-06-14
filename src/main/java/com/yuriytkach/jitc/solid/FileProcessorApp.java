@@ -19,7 +19,7 @@ public class FileProcessorApp {
     new FileProcessorApp().count(folder, word);
   }
 
-  private void count(final String folder, final String word) {
+  long count(final String folder, final String word) {
     final FileFinder fileFinder = new FileFinder(Path.of(folder));
 
     final FileProcessor fileProcessor = new FileProcessor(
@@ -35,6 +35,7 @@ public class FileProcessorApp {
 
     final long count = fileProcessor.processLatestTextFile(word);
     System.out.printf("Occurrences of word '%s': %d%n", word, count);
+    return count;
   }
 
 }
